@@ -10,3 +10,6 @@ wheels/
 
 # Virtual environments
 .venv
+
+.abstracts_cache.json
+
