@@ -181,6 +181,8 @@ def openalex_fetch_by_title(title: str, year: str, cache: dict, email: str = "")
         resp = requests.get(OPENALEX_API, params=params, timeout=10)
         if resp.status_code == 200:
             for item in resp.json().get("results", []):
+                if item['title'].lower() != clean_title.lower():
+                    continue
                 normalized = _openalex_normalize(item)
                 if normalized:
                     cache[key] = normalized
